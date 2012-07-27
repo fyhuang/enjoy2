@@ -9,10 +9,10 @@
 #import "Target.h"
 
 @interface TargetMouseBtn : Target {
-    int which;
+    CGMouseButton which;
 }
 
-@property(readwrite) int which;
+@property(readwrite) CGMouseButton which;
 
 +(TargetMouseBtn*) unstringifyImpl: (NSArray*) comps;
 

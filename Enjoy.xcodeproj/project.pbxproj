@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		8B7E476C15C314A200C588FA /* TargetMouseBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E476B15C314A200C588FA /* TargetMouseBtn.m */; };
+		8BD9B54315C230FF00929C5D /* TargetMouseMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD9B54215C230FE00929C5D /* TargetMouseMove.m */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		D549CA4C0FBB441B00BC8203 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D549CA4B0FBB441B00BC8203 /* Credits.rtf */; };
+		D5617A360FAEB74000928B3A /* ConfigsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617A350FAEB74000928B3A /* ConfigsController.m */; };
+		D5617A390FAEBA1800928B3A /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617A380FAEBA1800928B3A /* Config.m */; };
+		D5617D1A0FAF568100928B3A /* JSActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617D190FAF568100928B3A /* JSActionButton.m */; };
+		D5617D260FAF579300928B3A /* JSActionHat.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617D250FAF579300928B3A /* JSActionHat.m */; };
+		D5617D2B0FAF579A00928B3A /* JSActionAnalog.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617D2A0FAF579A00928B3A /* JSActionAnalog.m */; };
+		D5617DF20FAF636C00928B3A /* SubAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617DF10FAF636C00928B3A /* SubAction.m */; };
+		D5617FD60FAFD06000928B3A /* Target.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617FD50FAFD06000928B3A /* Target.m */; };
+		D5617FD90FAFD1E600928B3A /* TargetKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617FD80FAFD1E600928B3A /* TargetKeyboard.m */; };
+		D5617FE40FAFD7B000928B3A /* TargetController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617FE30FAFD7B000928B3A /* TargetController.m */; };
+		D5617FE70FAFDB5800928B3A /* KeyInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617FE60FAFDB5800928B3A /* KeyInputTextView.m */; };
+		D561800A0FAFE8E400928B3A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56180090FAFE8E400928B3A /* Carbon.framework */; };
+		D594BE860FAE6219007A85F2 /* Joystick.m in Sources */ = {isa = PBXBuildFile; fileRef = D594BE850FAE6219007A85F2 /* Joystick.m */; };
+		D594BE8A0FAE64AD007A85F2 /* JSAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D594BE890FAE64AD007A85F2 /* JSAction.m */; };
+		D594BEF90FAE6FF2007A85F2 /* JoystickController.m in Sources */ = {isa = PBXBuildFile; fileRef = D594BEF80FAE6FF2007A85F2 /* JoystickController.m */; };
+		D594BF000FAE7397007A85F2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D594BEFF0FAE7397007A85F2 /* IOKit.framework */; };
+		D594BF830FAE9661007A85F2 /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D594BF820FAE9661007A85F2 /* ApplicationController.m */; };
+		D5F809710FB093400006A4DE /* TargetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F809700FB093400006A4DE /* TargetConfig.m */; };
+		D5F80A9D0FB0A2FF0006A4DE /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = D5617A080FAEAF8300928B3A /* icon.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* Enjoy_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enjoy_Prefix.pch; sourceTree = "<group>"; };
+		8B7E476A15C314A200C588FA /* TargetMouseBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMouseBtn.h; sourceTree = "<group>"; };
+		8B7E476B15C314A200C588FA /* TargetMouseBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMouseBtn.m; sourceTree = "<group>"; };
+		8BD9B54115C230FE00929C5D /* TargetMouseMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMouseMove.h; sourceTree = "<group>"; };
+		8BD9B54215C230FE00929C5D /* TargetMouseMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMouseMove.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Enjoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D549CA4B0FBB441B00BC8203 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		D5617A080FAEAF8300928B3A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		D5617A340FAEB74000928B3A /* ConfigsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigsController.h; sourceTree = "<group>"; };
+		D5617A350FAEB74000928B3A /* ConfigsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigsController.m; sourceTree = "<group>"; };
+		D5617A370FAEBA1800928B3A /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		D5617A380FAEBA1800928B3A /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		D5617D180FAF568100928B3A /* JSActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSActionButton.h; sourceTree = "<group>"; };
+		D5617D190FAF568100928B3A /* JSActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSActionButton.m; sourceTree = "<group>"; };
+		D5617D240FAF579300928B3A /* JSActionHat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSActionHat.h; sourceTree = "<group>"; };
+		D5617D250FAF579300928B3A /* JSActionHat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSActionHat.m; sourceTree = "<group>"; };
+		D5617D290FAF579A00928B3A /* JSActionAnalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSActionAnalog.h; sourceTree = "<group>"; };
+		D5617D2A0FAF579A00928B3A /* JSActionAnalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSActionAnalog.m; sourceTree = "<group>"; };
+		D5617DF00FAF636C00928B3A /* SubAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubAction.h; sourceTree = "<group>"; };
+		D5617DF10FAF636C00928B3A /* SubAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubAction.m; sourceTree = "<group>"; };
+		D5617FD40FAFD06000928B3A /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target.h; sourceTree = "<group>"; };
+		D5617FD50FAFD06000928B3A /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target.m; sourceTree = "<group>"; };
+		D5617FD70FAFD1E600928B3A /* TargetKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetKeyboard.h; sourceTree = "<group>"; };
+		D5617FD80FAFD1E600928B3A /* TargetKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetKeyboard.m; sourceTree = "<group>"; };
+		D5617FE20FAFD7B000928B3A /* TargetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetController.h; sourceTree = "<group>"; };
+		D5617FE30FAFD7B000928B3A /* TargetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetController.m; sourceTree = "<group>"; };
+		D5617FE50FAFDB5800928B3A /* KeyInputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyInputTextView.h; sourceTree = "<group>"; };
+		D5617FE60FAFDB5800928B3A /* KeyInputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyInputTextView.m; sourceTree = "<group>"; };
+		D56180090FAFE8E400928B3A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		D594BE840FAE6219007A85F2 /* Joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Joystick.h; sourceTree = "<group>"; };
+		D594BE850FAE6219007A85F2 /* Joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Joystick.m; sourceTree = "<group>"; };
+		D594BE880FAE64AD007A85F2 /* JSAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSAction.h; sourceTree = "<group>"; };
+		D594BE890FAE64AD007A85F2 /* JSAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSAction.m; sourceTree = "<group>"; };
+		D594BEF70FAE6FF2007A85F2 /* JoystickController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickController.h; sourceTree = "<group>"; };
+		D594BEF80FAE6FF2007A85F2 /* JoystickController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoystickController.m; sourceTree = "<group>"; };
+		D594BEFF0FAE7397007A85F2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		D594BF810FAE9661007A85F2 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
+		D594BF820FAE9661007A85F2 /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
+		D5F8096F0FB093400006A4DE /* TargetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetConfig.h; sourceTree = "<group>"; };
+		D5F809700FB093400006A4DE /* TargetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetConfig.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				D594BF000FAE7397007A85F2 /* IOKit.framework in Frameworks */,
+				D561800A0FAFE8E400928B3A /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D5617D290FAF579A00928B3A /* JSActionAnalog.h */,
+				D5617D2A0FAF579A00928B3A /* JSActionAnalog.m */,
+				D594BE840FAE6219007A85F2 /* Joystick.h */,
+				D594BE850FAE6219007A85F2 /* Joystick.m */,
+				D594BE880FAE64AD007A85F2 /* JSAction.h */,
+				D594BE890FAE64AD007A85F2 /* JSAction.m */,
+				D5617D240FAF579300928B3A /* JSActionHat.h */,
+				D5617D250FAF579300928B3A /* JSActionHat.m */,
+				D5617D180FAF568100928B3A /* JSActionButton.h */,
+				D5617D190FAF568100928B3A /* JSActionButton.m */,
+				D594BEF70FAE6FF2007A85F2 /* JoystickController.h */,
+				D594BEF80FAE6FF2007A85F2 /* JoystickController.m */,
+				D594BF810FAE9661007A85F2 /* ApplicationController.h */,
+				D594BF820FAE9661007A85F2 /* ApplicationController.m */,
+				D5617A340FAEB74000928B3A /* ConfigsController.h */,
+				D5617A350FAEB74000928B3A /* ConfigsController.m */,
+				D5617A370FAEBA1800928B3A /* Config.h */,
+				D5617A380FAEBA1800928B3A /* Config.m */,
+				D5617DF00FAF636C00928B3A /* SubAction.h */,
+				D5617DF10FAF636C00928B3A /* SubAction.m */,
+				D5F8096F0FB093400006A4DE /* TargetConfig.h */,
+				D5F809700FB093400006A4DE /* TargetConfig.m */,
+				D5617FD40FAFD06000928B3A /* Target.h */,
+				D5617FD50FAFD06000928B3A /* Target.m */,
+				D5617FD70FAFD1E600928B3A /* TargetKeyboard.h */,
+				D5617FD80FAFD1E600928B3A /* TargetKeyboard.m */,
+				D5617FE20FAFD7B000928B3A /* TargetController.h */,
+				D5617FE30FAFD7B000928B3A /* TargetController.m */,
+				D5617FE50FAFDB5800928B3A /* KeyInputTextView.h */,
+				D5617FE60FAFDB5800928B3A /* KeyInputTextView.m */,
+				8BD9B54115C230FE00929C5D /* TargetMouseMove.h */,
+				8BD9B54215C230FE00929C5D /* TargetMouseMove.m */,
+				8B7E476A15C314A200C588FA /* TargetMouseBtn.h */,
+				8B7E476B15C314A200C588FA /* TargetMouseBtn.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D594BEFF0FAE7397007A85F2 /* IOKit.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D56180090FAFE8E400928B3A /* Carbon.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Enjoy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* Enjoy */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = Enjoy;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Enjoy_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D549CA4B0FBB441B00BC8203 /* Credits.rtf */,
+				D5617A080FAEAF8300928B3A /* icon.icns */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Enjoy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoy" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Enjoy;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Enjoy;
+			productReference = 8D1107320486CEB800E47090 /* Enjoy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoy" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* Enjoy */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Enjoy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				D5F80A9D0FB0A2FF0006A4DE /* icon.icns in Resources */,
+				D549CA4C0FBB441B00BC8203 /* Credits.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				D594BE860FAE6219007A85F2 /* Joystick.m in Sources */,
+				D594BE8A0FAE64AD007A85F2 /* JSAction.m in Sources */,
+				D594BEF90FAE6FF2007A85F2 /* JoystickController.m in Sources */,
+				D594BF830FAE9661007A85F2 /* ApplicationController.m in Sources */,
+				D5617A360FAEB74000928B3A /* ConfigsController.m in Sources */,
+				D5617A390FAEBA1800928B3A /* Config.m in Sources */,
+				D5617D1A0FAF568100928B3A /* JSActionButton.m in Sources */,
+				D5617D260FAF579300928B3A /* JSActionHat.m in Sources */,
+				D5617D2B0FAF579A00928B3A /* JSActionAnalog.m in Sources */,
+				D5617DF20FAF636C00928B3A /* SubAction.m in Sources */,
+				D5617FD60FAFD06000928B3A /* Target.m in Sources */,
+				D5617FD90FAFD1E600928B3A /* TargetKeyboard.m in Sources */,
+				D5617FE40FAFD7B000928B3A /* TargetController.m in Sources */,
+				D5617FE70FAFDB5800928B3A /* KeyInputTextView.m in Sources */,
+				D5F809710FB093400006A4DE /* TargetConfig.m in Sources */,
+				8BD9B54315C230FF00929C5D /* TargetMouseMove.m in Sources */,
+				8B7E476C15C314A200C588FA /* TargetMouseBtn.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58150DA1D0A300B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Enjoy_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Enjoy;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Enjoy_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Enjoy;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

@@ -18,7 +18,7 @@
 	IBOutlet KeyInputTextView* keyInput;
 	IBOutlet NSButtonCell *radioNoAction, *radioKey, *radioConfig;
 	IBOutlet NSMatrix* radioButtons;
-    IBOutlet NSMatrix* mouseBtnRadio;
+    IBOutlet NSSegmentedControl* mouseBtnSelect;
 	IBOutlet NSTextField* title;
 	IBOutlet NSPopUpButton* configPopup;
 	IBOutlet ConfigsController* configsController;
@@ -34,6 +34,7 @@
 -(void) refreshConfigsPreservingSelection: (BOOL) preserve;
 -(IBAction)configChosen:(id)sender;
 -(IBAction)radioChanged:(id)sender;
+-(IBAction)mbtnChanged:(id)sender;
 -(void) focusKey;
 
 @property(readwrite) BOOL enabled;

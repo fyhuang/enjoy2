@@ -11,13 +11,17 @@
 @implementation TargetMouseMove
 
 -(void) setInputValue: (int) newIV {
+    NSRect screenRect = [[NSScreen mainScreen] frame];
+    NSInteger height = screenRect.size.height;
     NSPoint mouseLoc = [NSEvent mouseLocation];
     if (dir == 0)
         mouseLoc.x += newIV;
     else
         mouseLoc.y += newIV;
     
-    CGEventRef move = CGEventCreateMouseEvent(NULL, kCGEventMouseMoved, CGPointMake(mouseLoc.x, mouseLoc.y), kCGMouseButtonLeft);
+    CGEventRef move = CGEventCreateMouseEvent(NULL, kCGEventMouseMoved,
+                                              CGPointMake(mouseLoc.x, height - mouseLoc.y),
+                                              kCGMouseButtonLeft);
     CGEventPost(kCGHIDEventTap, move);
     CFRelease(move);
 }

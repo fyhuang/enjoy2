@@ -15,6 +15,11 @@
 	[[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
 	[self commit];
 }
+-(IBAction)mbtnChanged:(id)sender {
+    [radioButtons setState: 1 atRow: 5 column: 0];
+	[[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
+	[self commit];
+}
 
 
 -(Target*) state {
@@ -50,7 +55,12 @@
         case 5: {
             // mouse button
             TargetMouseBtn *mb = [[TargetMouseBtn alloc] init];
-            [mb setWhich: [mouseBtnRadio selectedCol]];
+            if ([mouseBtnSelect selectedSegment] == 0) {
+                [mb setWhich: kCGMouseButtonLeft];
+            }
+            else {
+                [mb setWhich: kCGMouseButtonRight];
+            }
             return mb;
         }
 	}
@@ -73,6 +83,7 @@
 -(void) reset {
 	[keyInput clear];
 	[radioButtons setState: 1 atRow: 0 column: 0];
+    [mouseBtnSelect setSelectedSegment: 0];
 	[self refreshConfigsPreservingSelection: NO];
 }
 
@@ -80,6 +91,7 @@
 	[radioButtons setEnabled: enabled];
 	[keyInput setEnabled: enabled];
 	[configPopup setEnabled: enabled];
+    [mouseBtnSelect setEnabled: enabled];
 }
 -(BOOL) enabled {
 	return [radioButtons isEnabled];
@@ -113,12 +125,20 @@
 	} else if([target isKindOfClass: [TargetConfig class]]) {
 		[radioButtons setState:1 atRow: 2 column: 0];
 		[configPopup selectItemAtIndex: [[configsController configs] indexOfObject: [(TargetConfig*)target config]]];
-    } else if ([target isKindOfClass: [TargetMouseMove class]]) {
+    }
+    else if ([target isKindOfClass: [TargetMouseMove class]]) {
         if ([(TargetMouseMove *)target dir] == 0)
             [radioButtons setState:1 atRow: 3 column: 0];
         else
             [radioButtons setState:1 atRow: 4 column: 0];
-	} else {
+	}
+    else if ([target isKindOfClass: [TargetMouseBtn class]]) {
+        [radioButtons setState: 1 atRow: 5 column: 0];
+        if ([(TargetMouseBtn *)target which] == kCGMouseButtonLeft)
+            [mouseBtnSelect setSelectedSegment: 0];
+        else
+            [mouseBtnSelect setSelectedSegment: 1];
+    } else {
 		[NSException raise:@"Unknown target subclass" format:@"Unknown target subclass"];
 	}
 }

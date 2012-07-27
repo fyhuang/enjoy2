@@ -13,7 +13,7 @@
 @synthesize which;
 
 -(NSString*) stringify {
-	return [[NSString alloc] initWithFormat: @"mbtn~%d", which];
+	return [[NSString alloc] initWithFormat: @"mbtn~%u", which];
 }
 
 +(TargetMouseBtn*) unstringifyImpl: (NSArray*) comps {
@@ -24,22 +24,26 @@
 }
 
 -(void) trigger {
+    NSRect screenRect = [[NSScreen mainScreen] frame];
+    NSInteger height = screenRect.size.height;
     NSPoint mouseLoc = [NSEvent mouseLocation];
     CGEventType eventType = (which == kCGMouseButtonLeft) ? kCGEventLeftMouseDown : kCGEventRightMouseDown;
     CGEventRef click = CGEventCreateMouseEvent(NULL,
                                                eventType,
-                                               CGPointMake(mouseLoc.x, mouseLoc.y),
+                                               CGPointMake(mouseLoc.x, height - mouseLoc.y),
                                                which);
     CGEventPost(kCGHIDEventTap, click);
     CFRelease(click);
 }
 
 -(void) untrigger {
+    NSRect screenRect = [[NSScreen mainScreen] frame];
+    NSInteger height = screenRect.size.height;
     NSPoint mouseLoc = [NSEvent mouseLocation];
     CGEventType eventType = (which == kCGMouseButtonLeft) ? kCGEventLeftMouseUp : kCGEventRightMouseUp;
     CGEventRef click = CGEventCreateMouseEvent(NULL,
                                                eventType,
-                                               CGPointMake(mouseLoc.x, mouseLoc.y),
+                                               CGPointMake(mouseLoc.x, height - mouseLoc.y),
                                                which);
     CGEventPost(kCGHIDEventTap, click);
     CFRelease(click);
