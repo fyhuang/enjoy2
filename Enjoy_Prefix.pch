@@ -1,0 +1,27 @@
+//
+// Prefix header for all source files of the 'Enjoy' target in the 'Enjoy' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+#import <IOKit/hid/IOHIDLib.h>
+
+#import "ApplicationController.h"
+#import "Config.h"
+#import "ConfigsController.h"
+#import "Joystick.h"
+#import "JoystickController.h"
+#import "JSAction.h"
+#import "JSActionAnalog.h"
+#import "JSActionButton.h"
+#import "JSActionHat.h"
+#import "KeyInputTextView.h"
+#import "SubAction.h"
+#import "Target.h"
+#import "TargetConfig.h"
+#import "TargetController.h"
+#import "TargetKeyboard.h"
+#import "TargetMouseMove.h"
+#import "TargetMouseBtn.h"
