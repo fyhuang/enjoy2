@@ -1,4 +1,5 @@
 Copyright (c) 2009 Sam McCall
+Copyright (c) 2012 Yifeng Huang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
