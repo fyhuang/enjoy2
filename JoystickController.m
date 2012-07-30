@@ -5,14 +5,18 @@
 //  Created by Sam McCall on 4/05/09.
 //
 
+#import "CoreFoundation/CoreFoundation.h"
+
 @implementation JoystickController
 
-@synthesize joysticks, selectedAction;
+@synthesize joysticks, runningTargets, selectedAction, frontWindowOnly;
 
 -(id) init {
 	if(self=[super init]) {
 		joysticks = [[NSMutableArray alloc]init];
+        runningTargets = [[NSMutableArray alloc]init];
 		programmaticallySelecting = NO;
+        mouseLoc.x = mouseLoc.y = 0;
 	}
 	return self;
 }
@@ -40,6 +44,22 @@ static NSMutableDictionary* create_criterion( UInt32 inUsagePage, UInt32 inUsage
 	[outlineView expandItem: handler];
 }
 
+BOOL objInArray(NSMutableArray *array, id object) {
+    for (id o in array) {
+        if (o == object)
+            return true;
+    }
+    return false;
+}
+
+void timer_callback(CFRunLoopTimerRef timer, void *ctx) {
+    JoystickController *jc = (JoystickController *)ctx;
+    jc->mouseLoc = [NSEvent mouseLocation];
+    for (Target *target in [jc runningTargets]) {
+        [target update: jc];
+    }
+}
+
 void input_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDValueRef value) {
 	JoystickController* self = (JoystickController*)inContext;
 	IOHIDDeviceRef device = IOHIDQueueGetDevice((IOHIDQueueRef) inSender);
@@ -61,8 +81,27 @@ void input_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDVal
 				continue;
 			/* target application? doesn't seem to be any need since we are only active when it's in front */
 			/* might be required for some strange actions */
-			[target setRunning: [subaction active]];
-            [target setInputValue: IOHIDValueGetIntegerValue(value)];
+            if ([target running] != [subaction active]) {
+                if ([subaction active]) {
+                    [target trigger: self];
+                }
+                else {
+                    [target untrigger: self];
+                }
+                [target setRunning: [subaction active]];
+            }
+            
+            if ([mainAction isKindOfClass: [JSActionAnalog class]]) {
+                double realValue = [(JSActionAnalog*)mainAction getRealValue: IOHIDValueGetIntegerValue(value)];
+                [target setInputValue: realValue];
+            
+                // Add to list of running targets
+                if ([target isContinuous] && [target running]) {
+                    if (!objInArray([self runningTargets], target)) {
+                        [[self runningTargets] addObject: target];
+                    }
+                }
+            }
 		}
 	} else if([[NSApplication sharedApplication] isActive] && [[[NSApplication sharedApplication]mainWindow]isVisible]) {
 		// joysticks not active, use it to select stuff
@@ -134,11 +173,11 @@ void remove_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDDe
 		 create_criterion(kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick),
 		 create_criterion(kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad),
          create_criterion(kHIDPage_GenericDesktop, kHIDUsage_GD_MultiAxisController),
-         create_criterion(kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard),
+         //create_criterion(kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard),
 	nil];
 	
 	IOHIDManagerSetDeviceMatchingMultiple(hidManager, (CFArrayRef)criteria);
-	
+    
 	IOHIDManagerScheduleWithRunLoop( hidManager, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode );
 	IOReturn tIOReturn = IOHIDManagerOpen( hidManager, kIOHIDOptionsTypeNone );
 	(void)tIOReturn;
@@ -147,6 +186,17 @@ void remove_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDDe
 	IOHIDManagerRegisterDeviceRemovalCallback(hidManager, remove_callback, (void*) self);
 //	IOHIDManagerRegisterInputValueCallback(hidManager, input_callback, (void*)self);
 // register individually so we can find the device more easily
+    
+    
+	
+    // Setup timer for continuous targets
+    CFRunLoopTimerContext ctx = {
+        0, (void*)self, NULL, NULL, NULL
+    };
+    CFRunLoopTimerRef timer = CFRunLoopTimerCreate(kCFAllocatorDefault,
+                                                   CFAbsoluteTimeGetCurrent(), 1.0/80.0,
+                                                   0, 0, timer_callback, &ctx);
+    CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, kCFRunLoopDefaultMode);
 }
 
 -(id) determineSelectedAction {

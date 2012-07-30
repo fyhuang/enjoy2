@@ -21,13 +21,13 @@
 	return target;
 }
 
--(void) trigger {
+-(void) trigger: (JoystickController *)jc {
 	CGEventRef keyDown = CGEventCreateKeyboardEvent(NULL, vk, true);
 	CGEventPost(kCGHIDEventTap, keyDown);
 	CFRelease(keyDown);
 }
 
--(void) untrigger {
+-(void) untrigger: (JoystickController *)jc {
 	CGEventRef keyUp = CGEventCreateKeyboardEvent(NULL, vk, false);
 	CGEventPost(kCGHIDEventTap, keyUp);
 	CFRelease(keyUp);

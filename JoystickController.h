@@ -15,12 +15,17 @@
 
 @interface JoystickController : NSObject {
 	NSMutableArray *joysticks;
+    NSMutableArray *runningTargets;
 	IOHIDManagerRef hidManager;
 	IBOutlet NSOutlineView* outlineView;
 	IBOutlet TargetController* targetController;
 	IBOutlet ConfigsController* configsController;
 	id selectedAction;
 	BOOL programmaticallySelecting;
+    BOOL frontWindowOnly;
+    
+    @public
+    NSPoint mouseLoc;
 }
 
 -(void) setup;
@@ -28,5 +33,7 @@
 
 @property(readonly) id selectedAction;
 @property(readonly) NSMutableArray *joysticks;
+@property(readonly) NSMutableArray *runningTargets;
+@property(readwrite) BOOL frontWindowOnly;
 
 @end

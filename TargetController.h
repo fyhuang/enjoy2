@@ -18,7 +18,9 @@
 	IBOutlet KeyInputTextView* keyInput;
 	IBOutlet NSButtonCell *radioNoAction, *radioKey, *radioConfig;
 	IBOutlet NSMatrix* radioButtons;
+    IBOutlet NSSegmentedControl* mouseDirSelect;
     IBOutlet NSSegmentedControl* mouseBtnSelect;
+    IBOutlet NSSegmentedControl* scrollDirSelect;
 	IBOutlet NSTextField* title;
 	IBOutlet NSPopUpButton* configPopup;
 	IBOutlet ConfigsController* configsController;
@@ -34,7 +36,9 @@
 -(void) refreshConfigsPreservingSelection: (BOOL) preserve;
 -(IBAction)configChosen:(id)sender;
 -(IBAction)radioChanged:(id)sender;
+-(IBAction)mdirChanged:(id)sender;
 -(IBAction)mbtnChanged:(id)sender;
+-(IBAction)sdirChanged:(id)sender;
 -(void) focusKey;
 
 @property(readwrite) BOOL enabled;

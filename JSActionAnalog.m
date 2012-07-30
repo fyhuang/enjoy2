@@ -30,7 +30,7 @@
     //Target* target = [[base->configsController currentConfig] getTargetForAction: [subActions objectAtIndex: 0]];
     
 	int raw = IOHIDValueGetIntegerValue(value);
-	double parsed = offset + scale * raw;
+    double parsed = [self getRealValue: raw];
 	
 	if(parsed < -0.3) // fixed?!
 		return [subActions objectAtIndex: 0];
@@ -44,10 +44,15 @@
     [[subActions objectAtIndex: 2] setActive: true];
     
 	int raw = IOHIDValueGetIntegerValue(value);
-	double parsed = offset + scale * raw;
+    double parsed = [self getRealValue: raw];
 	
 	[[subActions objectAtIndex: 0] setActive: (parsed < -0.3)];
 	[[subActions objectAtIndex: 1] setActive: (parsed > 0.3)];
+}
+
+-(double) getRealValue: (int)value {
+	double parsed = offset + scale * value;
+    return parsed;
 }
 
 @synthesize offset, scale;

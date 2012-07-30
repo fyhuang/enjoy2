@@ -10,6 +10,8 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		8B7E476C15C314A200C588FA /* TargetMouseBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E476B15C314A200C588FA /* TargetMouseBtn.m */; };
 		8BD9B54315C230FF00929C5D /* TargetMouseMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD9B54215C230FE00929C5D /* TargetMouseMove.m */; };
+		8BEFAD9C15C46BFF00823AEC /* TargetMouseScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEFAD9B15C46BFF00823AEC /* TargetMouseScroll.m */; };
+		8BEFADA015C476DC00823AEC /* TargetToggleMouseScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEFAD9F15C476DC00823AEC /* TargetToggleMouseScope.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -47,6 +49,10 @@
 		8B7E476B15C314A200C588FA /* TargetMouseBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMouseBtn.m; sourceTree = "<group>"; };
 		8BD9B54115C230FE00929C5D /* TargetMouseMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMouseMove.h; sourceTree = "<group>"; };
 		8BD9B54215C230FE00929C5D /* TargetMouseMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMouseMove.m; sourceTree = "<group>"; };
+		8BEFAD9A15C46BFF00823AEC /* TargetMouseScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMouseScroll.h; sourceTree = "<group>"; };
+		8BEFAD9B15C46BFF00823AEC /* TargetMouseScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMouseScroll.m; sourceTree = "<group>"; };
+		8BEFAD9E15C476DC00823AEC /* TargetToggleMouseScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetToggleMouseScope.h; sourceTree = "<group>"; };
+		8BEFAD9F15C476DC00823AEC /* TargetToggleMouseScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetToggleMouseScope.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Enjoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D549CA4B0FBB441B00BC8203 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -136,6 +142,10 @@
 				8BD9B54215C230FE00929C5D /* TargetMouseMove.m */,
 				8B7E476A15C314A200C588FA /* TargetMouseBtn.h */,
 				8B7E476B15C314A200C588FA /* TargetMouseBtn.m */,
+				8BEFAD9A15C46BFF00823AEC /* TargetMouseScroll.h */,
+				8BEFAD9B15C46BFF00823AEC /* TargetMouseScroll.m */,
+				8BEFAD9E15C476DC00823AEC /* TargetToggleMouseScope.h */,
+				8BEFAD9F15C476DC00823AEC /* TargetToggleMouseScope.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -292,6 +302,8 @@
 				D5F809710FB093400006A4DE /* TargetConfig.m in Sources */,
 				8BD9B54315C230FF00929C5D /* TargetMouseMove.m in Sources */,
 				8B7E476C15C314A200C588FA /* TargetMouseBtn.m in Sources */,
+				8BEFAD9C15C46BFF00823AEC /* TargetMouseScroll.m in Sources */,
+				8BEFADA015C476DC00823AEC /* TargetToggleMouseScope.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

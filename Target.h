@@ -10,13 +10,16 @@
 
 @interface Target : NSObject {
 	BOOL running;
-    int inputValue;
+    BOOL isContinuous;
+    double inputValue;
 }
 
 @property(readwrite) BOOL running;
-@property(readwrite) int inputValue;
--(void) trigger;
--(void) untrigger;
+@property(readonly) BOOL isContinuous;
+@property(readwrite) double inputValue;
+-(void) trigger: (JoystickController *)jc;
+-(void) untrigger: (JoystickController *)jc;
+-(void) update: (JoystickController *)jc;
 -(NSString*) stringify;
 +(Target*) unstringify: (NSString*) str withConfigList: (NSArray*) configs;
 

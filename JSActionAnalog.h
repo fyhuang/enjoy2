@@ -16,4 +16,7 @@
 @property(readwrite) double offset;
 @property(readwrite) double scale;
 
+- (id) initWithIndex: (int)newIndex;
+-(double) getRealValue: (int) value;
+
 @end

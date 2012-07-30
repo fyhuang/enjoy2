@@ -19,6 +19,10 @@
         return [TargetMouseMove unstringifyImpl:components];
     if([typeTag isEqualToString:@"mbtn"])
         return [TargetMouseBtn unstringifyImpl:components];
+    if([typeTag isEqualToString:@"mscroll"])
+        return [TargetMouseScroll unstringifyImpl:components];
+    if([typeTag isEqualToString:@"mtoggle"])
+        return [TargetToggleMouseScope unstringifyImpl:components];
 		
 	NSParameterAssert(NO);
 	return NULL;
@@ -29,27 +33,22 @@
 	return NULL;
 }
 
--(void) trigger {
+-(void) trigger: (JoystickController *)jc {
 	[self doesNotRecognizeSelector:_cmd];
 }
 
--(void) untrigger {
+-(void) untrigger: (JoystickController *)jc {
 	// no-op by default
 }
 
--(BOOL) running {
-	return running;
-}
--(void) setRunning: (BOOL) newRunning {
-	if(newRunning == running)
-		return;
-	if(newRunning)
-		[self trigger];
-	else
-		[self untrigger];
-	running = newRunning;		
+-(void) update: (JoystickController *) jc {
+    [self doesNotRecognizeSelector:_cmd];
 }
 
-@synthesize inputValue;
+-(BOOL) isContinuous {
+    return false;
+}
+
+@synthesize inputValue, running;
 
 @end

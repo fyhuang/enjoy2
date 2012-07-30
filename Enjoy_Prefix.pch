@@ -25,3 +25,5 @@
 #import "TargetKeyboard.h"
 #import "TargetMouseMove.h"
 #import "TargetMouseBtn.h"
+#import "TargetMouseScroll.h"
+#import "TargetToggleMouseScope.h"
