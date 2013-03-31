@@ -12,8 +12,10 @@
 -(id) init {
 	if(self = [super init]) {
 		configs = [[NSMutableArray alloc] init];
+        
+        // Make (default) config
 		currentConfig = [[Config alloc] init];
-		[currentConfig setName: @"(default)"];
+		[currentConfig setName: @"Default"];
 		[currentConfig setProtect: YES];
 		[configs addObject: currentConfig];		
 	}
@@ -23,10 +25,10 @@
 -(void) restoreNeutralConfig {
 	if(!neutralConfig)
 		return;
-	if([configs indexOfObject:neutralConfig] < 0) {// deleted, keep what we have
+	/*if([configs indexOfObject:neutralConfig] < 0) {// deleted, keep what we have
 		neutralConfig = NULL;
 		return;
-	}
+	}*/
 	[self activateConfig: neutralConfig forApplication: NULL];
 }
 
@@ -48,7 +50,7 @@
 	currentConfig = config;
 	[removeButton setEnabled: ![config protect]];
 	[targetController load];
-	[[[NSApplication sharedApplication] delegate] configChanged];
+	[appController configChanged];
 	[tableView selectRow: [configs indexOfObject: config] byExtendingSelection: NO];
 }
 
@@ -56,7 +58,7 @@
 	Config* newConfig = [[Config alloc] init];
 	[newConfig setName: @"untitled"];
 	[configs addObject: newConfig];
-	[[[NSApplication sharedApplication] delegate] configsChanged];
+	[appController configsListChanged];
 	[tableView reloadData];
 	[tableView selectRow: ([configs count]-1) byExtendingSelection: NO];
 	[tableView editColumn: 0 row:([configs count]-1) withEvent:nil select:YES];
@@ -78,7 +80,7 @@
 				[entries removeObjectForKey: key];
 		}
 	}
-	[[[NSApplication sharedApplication] delegate] configsChanged];
+	[appController configsListChanged];
 	
 	[tableView reloadData];
 }
@@ -99,7 +101,7 @@
 	[(Config*)[configs objectAtIndex: index] setName: newName];
 	[targetController refreshConfigsPreservingSelection:YES];
 	[tableView reloadData];
-	[[[NSApplication sharedApplication] delegate] configsChanged];
+	[appController configsListChanged];
 }
 
 -(int)numberOfRowsInTableView: (NSTableView*)table {
@@ -123,9 +125,58 @@
 -(void) save {
     [[NSUserDefaults standardUserDefaults] setObject:[self dumpAll] forKey:@"configurations"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Also save to JSON
+    [self makeMappingsDirectory];
+    for (Config *mapping in configs) {
+        [mapping saveJSONTo:[self getMappingFilenameFor:mapping]];
+    }
+    
+    // TODO: synchronize to web
 }
 -(void) load {
-	[self loadAllFrom: [[NSUserDefaults standardUserDefaults] objectForKey:@"configurations"]];
+    NSString *selected_mapping = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedMapping"];
+    if (selected_mapping == nil) {
+        // Are there old-style configurations?
+        id old_configs = [[NSUserDefaults standardUserDefaults] objectForKey:@"configurations"];
+        if (old_configs == nil) {
+            return;
+        }
+        
+        // Load old configurations from NSUserDefaults
+        NSLog(@"Loading configurations from NSUserDefaults (Enjoy2 1.1)\n");
+        [self ver11LoadConfigsFrom: old_configs];
+    }
+    else {
+        [self loadAllFromDir:[self getMappingsDirectory]];
+    }
+}
+
+-(void) loadAllFromDir:(NSURL *)dir {
+    NSError *error;
+    NSArray *mapping_urls = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:dir includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:&error];
+    if (mapping_urls == nil) {
+        NSLog(@"Couldn't load mappings: %@\n", error);
+        return;
+    }
+    
+    NSMutableArray *new_mappings = [[NSMutableArray alloc] init];
+    // Load in 2 passes, in case mapping1 refers to mapping2 via a TargetMapping (TargetConfig)
+    for (NSURL *url in mapping_urls) {
+        Config *mapping = [[Config alloc] init];
+        
+        NSData *json_data = [NSData dataWithContentsOfURL:url];
+        [mapping loadSkelFromJSON:json_data];
+        [json_data release];
+    }
+    
+    for (NSURL *url in mapping_urls) {
+        Config *mapping = [[Config alloc] init];
+        
+        NSData *json_data = [NSData dataWithContentsOfURL:url];
+        [mapping loadFromJSON:json_data];
+        [json_data release];
+    }
 }
 
 -(NSDictionary*) dumpAll {
@@ -168,9 +219,10 @@
 	}
 	
 	configs = newConfigs;
-	[tableView reloadData];
 	currentConfig = NULL;
-	[[[NSApplication sharedApplication] delegate] configsChanged];
+    
+	[tableView reloadData];
+	[appController configsListChanged];
 	
 	int index = [[envelope objectForKey: @"selectedIndex"] intValue];
 	[self activateConfig: [configs objectAtIndex:index] forApplication: NULL];
@@ -185,6 +237,41 @@
 		}
 	}
 	[self restoreNeutralConfig];
+}
+
+-(NSURL*) getMappingsDirectory {
+    NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
+    if ([urls count] == 0) {
+        NSLog(@"No URLs returned for NSApplicationSupportDirectory!\n");
+        return NULL;
+    }
+    NSURL *u = [urls objectAtIndex:0];
+    
+    //NSString *bundle_name = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    NSString *bundle_name = @"Enjoy2";
+    NSURL *as_dir = [u URLByAppendingPathComponent:bundle_name isDirectory:true];
+    NSURL *mappings_dir = [as_dir URLByAppendingPathComponent:@"mappings"];
+    
+    return mappings_dir;
+}
+
+-(void) makeMappingsDirectory {
+    NSString *path = [[self getMappingsDirectory] path];
+    NSError *error;
+    
+    BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:true attributes:nil error:&error];
+    if (!result) {
+        NSLog(@"Couldn't create mappings directory: %@\n", error);
+    }
+}
+
+-(NSURL*) getMappingFilenameFor:(Config *)config {
+    // Returns ".../Application Support/Enjoy2/mappings/[mapping].json"
+    NSURL *mappings_dir = [self getMappingsDirectory];
+    NSString *filename = [[config name] stringByAppendingString:@".json"];
+    NSURL *full_filename = [mappings_dir URLByAppendingPathComponent:filename];
+    
+    return full_filename;
 }
 
 -(ProcessSerialNumber*) targetApplication {

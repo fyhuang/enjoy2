@@ -15,15 +15,19 @@
 	IBOutlet NSButton* removeButton;
 	IBOutlet NSTableView* tableView;
 	IBOutlet TargetController* targetController;
+    IBOutlet ApplicationController *appController;
+    
 	Config* currentConfig;
 	Config* neutralConfig; /* last config to be manually selected */
 	ProcessSerialNumber attachedApplication;
+    
 }
 
 -(IBAction) addPressed: (id)sender;
 -(IBAction) removePressed: (id)sender;
 -(void) activateConfig: (Config*)config forApplication: (ProcessSerialNumber*) psn;
 
+-(void) loadAllFromDir: (NSURL*)dir;
 -(NSDictionary*) dumpAll;
 -(void) loadAllFrom: (NSDictionary*) dict;
 
@@ -34,6 +38,10 @@
 -(void) save;
 -(void) load;
 
--(void) applicationSwitchedTo: (NSString*) name withPsn: (ProcessSerialNumber) psn;	
+-(void) applicationSwitchedTo: (NSString*) name withPsn: (ProcessSerialNumber) psn;
+
+-(NSURL*) getMappingsDirectory;
+-(void) makeMappingsDirectory;
+-(NSURL*) getMappingFilenameFor: (Config*) config;
 
 @end

@@ -28,7 +28,7 @@
 @property(readonly) TargetController * targetController;
 @property(readonly) ConfigsController * configsController;
 -(IBAction) toggleActivity: (id)sender;
--(void) configsChanged;
+-(void) configsListChanged;
 -(void) configChanged;
 
 @end

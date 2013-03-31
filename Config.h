@@ -22,4 +22,9 @@
 -(void) setTarget:(Target*)target forAction:(id)jsa;
 -(Target*) getTargetForAction: (id) jsa;
 
+-(void) saveJSONTo: (NSURL*)filename;
+// Load only the name from the JSON file (for loading 1st pass)
+-(Config*) loadSkelFromJSON: (NSData*)jsonData;
+-(Config*) loadFromJSON: (NSData*)jsonData;
+
 @end

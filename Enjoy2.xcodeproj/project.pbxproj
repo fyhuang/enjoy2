@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		8B7E22D91707EF6100DBA438 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E22D81707EF6100DBA438 /* README.md */; };
+		8B7E22E01707FD0900DBA438 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E22DD1707FD0900DBA438 /* JSONKit.m */; };
 		8B7E476C15C314A200C588FA /* TargetMouseBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E476B15C314A200C588FA /* TargetMouseBtn.m */; };
 		8BD9B54315C230FF00929C5D /* TargetMouseMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD9B54215C230FE00929C5D /* TargetMouseMove.m */; };
 		8BEFAD9C15C46BFF00823AEC /* TargetMouseScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEFAD9B15C46BFF00823AEC /* TargetMouseScroll.m */; };
@@ -44,7 +46,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* Enjoy_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enjoy_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Enjoy2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enjoy2_Prefix.pch; sourceTree = "<group>"; };
+		8B7E22D81707EF6100DBA438 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		8B7E22DC1707FD0900DBA438 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		8B7E22DD1707FD0900DBA438 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		8B7E476A15C314A200C588FA /* TargetMouseBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMouseBtn.h; sourceTree = "<group>"; };
 		8B7E476B15C314A200C588FA /* TargetMouseBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMouseBtn.m; sourceTree = "<group>"; };
 		8BD9B54115C230FE00929C5D /* TargetMouseMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetMouseMove.h; sourceTree = "<group>"; };
@@ -54,7 +59,7 @@
 		8BEFAD9E15C476DC00823AEC /* TargetToggleMouseScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetToggleMouseScope.h; sourceTree = "<group>"; };
 		8BEFAD9F15C476DC00823AEC /* TargetToggleMouseScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetToggleMouseScope.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Enjoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Enjoy2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoy2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D549CA4B0FBB441B00BC8203 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		D5617A080FAEAF8300928B3A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		D5617A340FAEB74000928B3A /* ConfigsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigsController.h; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8B7E22DA1707FD0900DBA438 /* JSONKit */,
 				D5617D290FAF579A00928B3A /* JSActionAnalog.h */,
 				D5617D2A0FAF579A00928B3A /* JSActionAnalog.m */,
 				D594BE840FAE6219007A85F2 /* Joystick.h */,
@@ -173,7 +179,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* Enjoy.app */,
+				8D1107320486CEB800E47090 /* Enjoy2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,6 +187,7 @@
 		29B97314FDCFA39411CA2CEA /* Enjoy */ = {
 			isa = PBXGroup;
 			children = (
+				8B7E22D81707EF6100DBA438 /* README.md */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -193,7 +200,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* Enjoy_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* Enjoy2_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -220,12 +227,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8B7E22DA1707FD0900DBA438 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				8B7E22DC1707FD0900DBA438 /* JSONKit.h */,
+				8B7E22DD1707FD0900DBA438 /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* Enjoy */ = {
+		8D1107260486CEB800E47090 /* Enjoy2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoy" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoy2" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -235,10 +251,10 @@
 			);
 			dependencies = (
 			);
-			name = Enjoy;
+			name = Enjoy2;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Enjoy;
-			productReference = 8D1107320486CEB800E47090 /* Enjoy.app */;
+			productReference = 8D1107320486CEB800E47090 /* Enjoy2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -246,7 +262,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoy" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoy2" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -260,7 +276,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* Enjoy */,
+				8D1107260486CEB800E47090 /* Enjoy2 */,
 			);
 		};
 /* End PBXProject section */
@@ -274,6 +290,7 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				D5F80A9D0FB0A2FF0006A4DE /* icon.icns in Resources */,
 				D549CA4C0FBB441B00BC8203 /* Credits.rtf in Resources */,
+				8B7E22D91707EF6100DBA438 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +321,7 @@
 				8B7E476C15C314A200C588FA /* TargetMouseBtn.m in Sources */,
 				8BEFAD9C15C46BFF00823AEC /* TargetMouseScroll.m in Sources */,
 				8BEFADA015C476DC00823AEC /* TargetToggleMouseScope.m in Sources */,
+				8B7E22E01707FD0900DBA438 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,10 +361,10 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Enjoy_Prefix.pch;
+				GCC_PREFIX_HEADER = Enjoy2_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = Enjoy;
+				PRODUCT_NAME = Enjoy2;
 			};
 			name = Debug;
 		};
@@ -361,10 +379,10 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Enjoy_Prefix.pch;
+				GCC_PREFIX_HEADER = Enjoy2_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = Enjoy;
+				PRODUCT_NAME = Enjoy2;
 			};
 			name = Release;
 		};
@@ -376,9 +394,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -389,15 +408,16 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoy" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Enjoy2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
@@ -406,7 +426,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoy" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoy2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

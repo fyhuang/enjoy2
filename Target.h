@@ -20,7 +20,10 @@
 -(void) trigger: (JoystickController *)jc;
 -(void) untrigger: (JoystickController *)jc;
 -(void) update: (JoystickController *)jc;
+
 -(NSString*) stringify;
 +(Target*) unstringify: (NSString*) str withConfigList: (NSArray*) configs;
+
+-(NSDictionary*) asDict;
 
 @end

@@ -20,6 +20,7 @@ pascal OSStatus appSwitch(EventHandlerCallRef handlerChain, EventRef event, void
 	[targetController setEnabled: false];
 	[self setActive: NO];
 	[configsController load];
+    
 	EventTypeSpec et;
 	et.eventClass = kEventClassApplication;
 	et.eventKind = kEventAppFrontSwitched;
@@ -63,7 +64,8 @@ pascal OSStatus appSwitch(EventHandlerCallRef handlerChain, EventRef event, void
 	[self setActive: ![self active]];
 }
 
--(void) configsChanged {
+-(void) configsListChanged {
+    // Update configs list in File menu
 	while([dockMenuBase numberOfItems] > 2)
 		[dockMenuBase removeItemAtIndex: ([dockMenuBase numberOfItems] - 1)];
 
