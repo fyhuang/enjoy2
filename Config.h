@@ -11,11 +11,9 @@
 
 @interface Config : NSObject {
 	NSString *name;
-	BOOL protect;
 	NSMutableDictionary *entries;
 }
 
-@property(readwrite) BOOL protect;
 @property(readwrite, copy) NSString* name;
 @property(readonly) NSMutableDictionary* entries;
 

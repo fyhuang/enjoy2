@@ -16,7 +16,6 @@
         // Make (default) config
 		currentConfig = [[Config alloc] init];
 		[currentConfig setName: @"Default"];
-		[currentConfig setProtect: YES];
 		[configs addObject: currentConfig];		
 	}
 	return self;
@@ -48,7 +47,9 @@
 		[targetController reset];
 	}
 	currentConfig = config;
-	[removeButton setEnabled: ![config protect]];
+    //[removeButton setEnabled: YES];
+    // TODO: quick hack
+    [removeButton setEnabled:([configs count] > 0)];
 	[targetController load];
 	[appController configChanged];
 	[tableView selectRow: [configs indexOfObject: config] byExtendingSelection: NO];
@@ -67,8 +68,6 @@
 	// save changes first
 	[tableView reloadData];
 	Config* current_config = [configs objectAtIndex: [tableView selectedRow]];
-	if([current_config protect])
-		return;
 	[configs removeObjectAtIndex: [tableView selectedRow]];
 	
 	// remove all "switch to configuration" actions
@@ -109,7 +108,7 @@
 }
 
 -(BOOL)tableView: (NSTableView*)view shouldEditTableColumn: (NSTableColumn*) column row: (int) index {
-	return ![[configs objectAtIndex: index] protect];
+	return YES;
 }	
 
 -(Config*) currentConfig {
@@ -196,37 +195,6 @@
 	[envelope setObject: [NSNumber numberWithInt: [configs indexOfObject: [self currentNeutralConfig] ] ] forKey: @"selectedIndex"];
 	return envelope;
 }
--(void) loadAllFrom: (NSDictionary*) envelope{
-	if(envelope == NULL)
-		return;
-	NSArray* ary = [envelope objectForKey: @"configurationList"];
-	
-	NSMutableArray* newConfigs = [[NSMutableArray alloc] init];
-	// have to do two passes in case config1 refers to config2 via a TargetConfig
-	for(int i=0; i<[ary count]; i++) {
-		Config* cfg = [[Config alloc] init];
-		[cfg setName: [[ary objectAtIndex:i] objectForKey:@"name"]];		
-		[newConfigs addObject: cfg];
-	}
-	[[configs objectAtIndex:0] setProtect: YES];
-	for(int i=0; i<[ary count]; i++) {
-		NSDictionary* dict = [[ary objectAtIndex:i] objectForKey:@"entries"];
-		for(id key in dict) {
-			[[[newConfigs objectAtIndex:i] entries] 
-			 setObject: [Target unstringify: [dict objectForKey: key] withConfigList: newConfigs]
-			 forKey: key];
-		}
-	}
-	
-	configs = newConfigs;
-	currentConfig = NULL;
-    
-	[tableView reloadData];
-	[appController configsListChanged];
-	
-	int index = [[envelope objectForKey: @"selectedIndex"] intValue];
-	[self activateConfig: [configs objectAtIndex:index] forApplication: NULL];
-}
 
 -(void) applicationSwitchedTo: (NSString*) name withPsn: (ProcessSerialNumber) psn {
 	for(int i=0; i<[configs count]; i++) {
@@ -278,6 +246,41 @@
 	if(neutralConfig)
 		return &attachedApplication;
 	return NULL;
+}
+
+
+///////////////////////////////////////
+// Legacy loading code from Enjoy2 v1.1
+
+-(void) ver11LoadConfigsFrom: (NSDictionary*) envelope{
+	if(envelope == NULL)
+		return;
+	NSArray* ary = [envelope objectForKey: @"configurationList"];
+	
+	NSMutableArray* newConfigs = [[NSMutableArray alloc] init];
+	// have to do two passes in case config1 refers to config2 via a TargetConfig
+	for(int i=0; i<[ary count]; i++) {
+		Config* cfg = [[Config alloc] init];
+		[cfg setName: [[ary objectAtIndex:i] objectForKey:@"name"]];
+		[newConfigs addObject: cfg];
+	}
+	for(int i=0; i<[ary count]; i++) {
+		NSDictionary* dict = [[ary objectAtIndex:i] objectForKey:@"entries"];
+		for(id key in dict) {
+			[[[newConfigs objectAtIndex:i] entries]
+			 setObject: [Target unstringify: [dict objectForKey: key] withConfigList: newConfigs]
+			 forKey: key];
+		}
+	}
+	
+	configs = newConfigs;
+	currentConfig = NULL;
+    
+	[tableView reloadData];
+	[appController configsListChanged];
+	
+	int index = [[envelope objectForKey: @"selectedIndex"] intValue];
+	[self activateConfig: [configs objectAtIndex:index] forApplication: NULL];
 }
 
 @end

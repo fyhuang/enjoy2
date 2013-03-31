@@ -16,7 +16,7 @@
 	return self;
 }
 
-@synthesize protect, name, entries;
+@synthesize name, entries;
 
 -(void) setTarget:(Target*)target forAction:(id)jsa {
 	[entries setValue:target forKey: [jsa stringify]];

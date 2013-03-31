@@ -29,7 +29,6 @@
 
 -(void) loadAllFromDir: (NSURL*)dir;
 -(NSDictionary*) dumpAll;
--(void) loadAllFrom: (NSDictionary*) dict;
 
 @property(readonly) Config* currentConfig;
 @property(readonly) Config* currentNeutralConfig;
@@ -43,5 +42,8 @@
 -(NSURL*) getMappingsDirectory;
 -(void) makeMappingsDirectory;
 -(NSURL*) getMappingFilenameFor: (Config*) config;
+
+// Legacy loading code from Enjoy2 v1.1
+-(void) ver11LoadConfigsFrom: (NSDictionary*) dict;
 
 @end
