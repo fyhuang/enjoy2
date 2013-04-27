@@ -65,7 +65,8 @@ void input_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDVal
 	IOHIDDeviceRef device = IOHIDQueueGetDevice((IOHIDQueueRef) inSender);
 	
 	Joystick* js = [self findJoystickByRef: device];
-	if([[[NSApplication sharedApplication] delegate] active]) {
+    ApplicationController *app_controller = [[NSApplication sharedApplication] delegate];
+	if([app_controller active]) {
 		// for reals
 		JSAction* mainAction = [js actionForEvent: value];
 		if(!mainAction)

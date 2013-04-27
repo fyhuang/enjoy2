@@ -33,11 +33,6 @@
 	return NULL;
 }
 
--(NSDictionary*) asDict {
-    // TODO: actually do something
-    return [[NSDictionary alloc] init];
-}
-
 -(void) trigger: (JoystickController *)jc {
 	[self doesNotRecognizeSelector:_cmd];
 }

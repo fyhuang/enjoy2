@@ -22,12 +22,13 @@
 }
 
 -(void) restoreNeutralConfig {
-	if(!neutralConfig)
+	if(!neutralConfig) {
 		return;
-	/*if([configs indexOfObject:neutralConfig] < 0) {// deleted, keep what we have
+    }
+	if([configs indexOfObject:neutralConfig] == NSNotFound) { // deleted, keep what we have
 		neutralConfig = NULL;
 		return;
-	}*/
+	}
 	[self activateConfig: neutralConfig forApplication: NULL];
 }
 
@@ -55,6 +56,24 @@
 	[tableView selectRow: [configs indexOfObject: config] byExtendingSelection: NO];
 }
 
+-(Config*) mappingWithName:(NSString *)name {
+    NSUInteger ix = [configs indexOfObjectPassingTest:^BOOL(id element, NSUInteger idx, BOOL *stop) {
+        if ([[(Config*)element name] isEqualToString:name]) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    
+    if (ix != NSNotFound) {
+        return [configs objectAtIndex:ix];
+    }
+    else {
+        NSLog(@"Mapping with name not found: %@\n", name);
+        return nil;
+    }
+}
+
 -(IBAction) addPressed: (id)sender {
 	Config* newConfig = [[Config alloc] init];
 	[newConfig setName: @"untitled"];
@@ -69,6 +88,8 @@
 	[tableView reloadData];
 	Config* current_config = [configs objectAtIndex: [tableView selectedRow]];
 	[configs removeObjectAtIndex: [tableView selectedRow]];
+    
+    // TODO: remove config file from disk
 	
 	// remove all "switch to configuration" actions
 	for(int i=0; i<[configs count]; i++) {
@@ -96,11 +117,24 @@
 -(void) tableView: (NSTableView*) view setObjectValue:obj forTableColumn:(NSTableColumn*) col row: (int)index {
     NSParameterAssert(index >= 0 && index < [configs count]);
 	/* ugly hack so stringification doesn't fail */
-	NSString* newName = [(NSString*)obj stringByReplacingOccurrencesOfString: @"~" withString: @""];
-	[(Config*)[configs objectAtIndex: index] setName: newName];
-	[targetController refreshConfigsPreservingSelection:YES];
-	[tableView reloadData];
-	[appController configsListChanged];
+	//NSString* newName = [(NSString*)obj stringByReplacingOccurrencesOfString: @"~" withString: @""];
+    
+    NSString *newName = (NSString*)obj;
+    // Check if name conflicts
+    BOOL conflicts = [self mappingWithName:newName] != nil;
+    
+    if (conflicts) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Please pick a unique name for this mapping"];
+        [alert runModal];
+        [tableView editColumn: 0 row:index withEvent:nil select:YES];
+    }
+    else {
+        [(Config*)[configs objectAtIndex: index] setName: newName];
+        [targetController refreshConfigsPreservingSelection:YES];
+        [tableView reloadData];
+        [appController configsListChanged];
+    }
 }
 
 -(int)numberOfRowsInTableView: (NSTableView*)table {
@@ -122,20 +156,20 @@
 }
 
 -(void) save {
-    [[NSUserDefaults standardUserDefaults] setObject:[self dumpAll] forKey:@"configurations"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-    
-    // Also save to JSON
+    // Save mappings to JSON
     [self makeMappingsDirectory];
     for (Config *mapping in configs) {
         [mapping saveJSONTo:[self getMappingFilenameFor:mapping]];
     }
     
+    [[NSUserDefaults standardUserDefaults] setObject:[[self currentNeutralConfig] name] forKey:@"selectedMapping"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+    
     // TODO: synchronize to web
 }
 -(void) load {
-    NSString *selected_mapping = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedMapping"];
-    if (selected_mapping == nil) {
+    NSString *selected_mapping_name = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedMapping"];
+    if (selected_mapping_name == nil) {
         // Are there old-style configurations?
         id old_configs = [[NSUserDefaults standardUserDefaults] objectForKey:@"configurations"];
         if (old_configs == nil) {
@@ -147,8 +181,21 @@
         [self ver11LoadConfigsFrom: old_configs];
     }
     else {
+        // Load JSON mappings
         [self loadAllFromDir:[self getMappingsDirectory]];
+        
+        // Selected mapping
+        [appController configsListChanged];
+        Config *mapping = [self mappingWithName:selected_mapping_name];
+        if (mapping != nil) {
+            [self activateConfig:mapping forApplication: NULL];
+        }
+        else {
+            NSLog(@"Selected mapping not found: %@\n", selected_mapping_name);
+        }
     }
+    
+	[tableView reloadData];
 }
 
 -(void) loadAllFromDir:(NSURL *)dir {
@@ -165,35 +212,23 @@
         Config *mapping = [[Config alloc] init];
         
         NSData *json_data = [NSData dataWithContentsOfURL:url];
+        // Just load the mapping name
         [mapping loadSkelFromJSON:json_data];
-        [json_data release];
+        [new_mappings addObject:mapping];
     }
     
+    int ix = 0;
     for (NSURL *url in mapping_urls) {
-        Config *mapping = [[Config alloc] init];
+        Config *mapping = [new_mappings objectAtIndex:ix];
         
         NSData *json_data = [NSData dataWithContentsOfURL:url];
-        [mapping loadFromJSON:json_data];
-        [json_data release];
+        [mapping loadFromJSON:json_data withConfigList:configs];
+        
+        ix++;
     }
-}
-
--(NSDictionary*) dumpAll {
-	NSMutableDictionary *envelope = [[NSMutableDictionary alloc] init];
-	NSMutableArray* ary = [[NSMutableArray alloc] init];
-	for(Config* config in configs) {
-		NSMutableDictionary* cfgInfo = [[NSMutableDictionary alloc] init];
-		[cfgInfo setObject:[config name] forKey:@"name"];
-		NSMutableDictionary* cfgEntries = [[NSMutableDictionary alloc] init];
-		for(id key in [config entries]) {
-			[cfgEntries setObject:[[[config entries]objectForKey:key]stringify] forKey: key];
-		}
-		[cfgInfo setObject: cfgEntries forKey: @"entries"];
-		[ary addObject: cfgInfo];
-	}
-	[envelope setObject: ary forKey: @"configurationList"];
-	[envelope setObject: [NSNumber numberWithInt: [configs indexOfObject: [self currentNeutralConfig] ] ] forKey: @"selectedIndex"];
-	return envelope;
+	
+	configs = new_mappings;
+	currentConfig = NULL;
 }
 
 -(void) applicationSwitchedTo: (NSString*) name withPsn: (ProcessSerialNumber) psn {

@@ -14,7 +14,14 @@ static BOOL active;
 
 pascal OSStatus appSwitch(EventHandlerCallRef handlerChain, EventRef event, void* userData);
 
+void onUncaughtException(NSException *exception) {
+    NSLog(@"Uncaught exception: %@", exception.description);
+}
+
 -(void) applicationDidFinishLaunching: (NSNotification*) notification {
+    // Debug: print exceptions
+    NSSetUncaughtExceptionHandler(&onUncaughtException);
+    
 	[jsController setup];
 	[drawer open];
 	[targetController setEnabled: false];
@@ -77,8 +84,12 @@ pascal OSStatus appSwitch(EventHandlerCallRef handlerChain, EventRef event, void
 -(void) configChanged {
 	Config* current = [configsController currentConfig];
 	NSArray* configs = [configsController configs];
-	for(int i=0; i<[configs count]; i++)
+    if ([dockMenuBase numberOfItems] - 2 != [configs count]) {
+        NSLog(@"dockMenuBase has wrong number of items!");
+    }
+	for(int i=0; i<[configs count]; i++) {
 		[[dockMenuBase itemAtIndex: (2+i)] setState: (([configs objectAtIndex:i] == current) ? YES : NO)];
+    }
 }
 
 -(void) chooseConfig: (id) sender {

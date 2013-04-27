@@ -23,6 +23,6 @@
 -(void) saveJSONTo: (NSURL*)filename;
 // Load only the name from the JSON file (for loading 1st pass)
 -(Config*) loadSkelFromJSON: (NSData*)jsonData;
--(Config*) loadFromJSON: (NSData*)jsonData;
+-(Config*) loadFromJSON: (NSData*)jsonData withConfigList:(NSArray*)configs;
 
 @end

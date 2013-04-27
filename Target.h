@@ -24,6 +24,4 @@
 -(NSString*) stringify;
 +(Target*) unstringify: (NSString*) str withConfigList: (NSArray*) configs;
 
--(NSDictionary*) asDict;
-
 @end

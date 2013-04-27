@@ -32,7 +32,7 @@
     
     NSMutableDictionary *mapping_entries = [[NSMutableDictionary alloc] init];
     for (id key in entries) {
-        [mapping_entries setObject:[[entries objectForKey:key] asDict] forKey:key];
+        [mapping_entries setObject:[[entries objectForKey:key] stringify] forKey:key];
     }
     [mapping_dict setObject:mapping_entries forKey:@"entries"];
     
@@ -40,8 +40,30 @@
     NSData *json_data = [mapping_dict JSONData];
     [json_data writeToURL:filename atomically:true];
     
+    [json_data release];
     [mapping_entries release];
     [mapping_dict release];
+}
+
+-(Config*) loadSkelFromJSON:(NSData *)jsonData {
+    NSDictionary *dict = [jsonData objectFromJSONData];
+    name = [dict objectForKey:@"name"];
+    return self;
+}
+
+-(Config*) loadFromJSON:(NSData *)jsonData withConfigList:(NSArray*)configs {
+    NSDictionary *jd = [jsonData objectFromJSONData];
+    NSString *jname = [jd objectForKey:@"name"];
+    if (![jname isEqualToString:name]) {
+        [NSException raise:@"Loading from JSON with different name" format:@"Loading from JSON with different name", nil];
+    }
+    
+    NSDictionary *entries_d = [jd objectForKey:@"entries"];
+    for(id key in entries_d) {
+        NSString *value = [entries_d objectForKey:key];
+        [entries setObject: [Target unstringify:value withConfigList:configs] forKey:key];
+    }
+    return self;
 }
 
 @end

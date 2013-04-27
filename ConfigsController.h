@@ -26,9 +26,9 @@
 -(IBAction) addPressed: (id)sender;
 -(IBAction) removePressed: (id)sender;
 -(void) activateConfig: (Config*)config forApplication: (ProcessSerialNumber*) psn;
+-(Config*) mappingWithName: (NSString*)name;
 
 -(void) loadAllFromDir: (NSURL*)dir;
--(NSDictionary*) dumpAll;
 
 @property(readonly) Config* currentConfig;
 @property(readonly) Config* currentNeutralConfig;

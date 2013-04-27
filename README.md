@@ -20,9 +20,27 @@ At startup, and when Enjoy2 is paused, press any button or move any analog stick
 
 To use an analog axis to move the mouse, select the "Analog" sub-item on the left.
 
+### Terminology
+
+A **mapping** specifies which keys/mouse buttons/mouse movements happen when a joystick button is pressed or axis moved. A **translation** specifies which hardware joystick buttons and axes translate into which virtual buttons and axes.
+
 ### Mapping modes
 
 Enjoy2 offers two mouse mapping modes: global and single-window. Enjoy2 starts in global mode, but you can set any joystick button to the "toggle mouse scope" action, which will change the mode. If you are using Enjoy2 to play a video game, you may find that one or the other mode offers better compatibility with your game's specific requirements.
+
+### Translations (upcoming feature)
+
+**Translations** allow you to specify a mapping (e.g. for playing a specific video game) once and apply it to a variety of similar controllers. For example, you could create a mapping and use it with PS3 controllers and Logitech PC gamepads.
+
+TODO: upcoming feature.
+
+## Transferring configuration files
+
+All the Enjoy2 configuration files (mappings and translations) are stored in the user's Application Support directory:
+
+    /Users/$USERNAME/Library/Application Support/Enjoy2/*
+
+The files are JSON-encoded and should be portable across machines.
 
 ## Requirements
 
