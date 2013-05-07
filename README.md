@@ -14,6 +14,10 @@ Enjoy2 supports multiple configurations (for different games or programs) and yo
 
 Enjoy2 is written by [@nongraphical](http://nongraphical.com) and is based on [Enjoy by Sam McCall](http://abstractable.net/enjoy/). Enjoy2 is MIT-licensed.
 
+## How to install
+
+[Download Enjoy2](http://nongraphical.s3-website-us-east-1.amazonaws.com/releases/Enjoy2.zip), extract the archive, and you're done!
+
 ## How to use
 
 At startup, and when Enjoy2 is paused, press any button or move any analog stick to jump to the configuration for that button or stick. From there, select one of the mapping options from the choices on the right.
