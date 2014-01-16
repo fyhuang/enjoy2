@@ -62,7 +62,7 @@ void timer_callback(CFRunLoopTimerRef timer, void *ctx) {
 
 void input_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDValueRef value) {
 	JoystickController* self = (JoystickController*)inContext;
-	IOHIDDeviceRef device = (IOHIDQueueRef) inSender;
+	IOHIDDeviceRef device = (IOHIDDeviceRef) inSender;
 	
 	Joystick* js = [self findJoystickByRef: device];
     ApplicationController *app_controller = [[NSApplication sharedApplication] delegate];
