@@ -35,6 +35,12 @@ void onUncaughtException(NSException *exception) {
 	InstallApplicationEventHandler(handler, 1, &et, self, NULL);
 }
 
+-(void) awakeFromNib {
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(beginActivityWithOptions:reason:)]) {
+        self.activity = [[NSProcessInfo processInfo] beginActivityWithOptions:0x00FFFFFF reason:@"Let joystick commands fire in the background"];
+    }
+}
+
 -(void) applicationWillTerminate: (NSNotification *)aNotification {
 	[configsController save];
 }

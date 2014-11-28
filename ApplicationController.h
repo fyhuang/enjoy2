@@ -24,6 +24,7 @@
 }
 
 @property(readwrite) BOOL active;
+@property (strong) id activity;
 @property(readonly) JoystickController * jsController;
 @property(readonly) TargetController * targetController;
 @property(readonly) ConfigsController * configsController;
