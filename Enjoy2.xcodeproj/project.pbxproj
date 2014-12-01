@@ -10,6 +10,9 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		8B0C55251709F78F0086F30B /* TranslationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C55231709F78F0086F30B /* TranslationWindow.xib */; };
 		8B0C5528170A07900086F30B /* dualshock.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C5527170A07900086F30B /* dualshock.png */; };
+		8B4B9DE31A2BFD2A0074ADC6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4B9DE21A2BFD2A0074ADC6 /* Sparkle.framework */; };
+		8B4B9DE61A2BFF6B0074ADC6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8B4B9DE51A2BFF6B0074ADC6 /* dsa_pub.pem */; };
+		8B4B9DE81A2C015A0074ADC6 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B4B9DE21A2BFD2A0074ADC6 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B7E22D91707EF6100DBA438 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E22D81707EF6100DBA438 /* README.md */; };
 		8B7E22E01707FD0900DBA438 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E22DD1707FD0900DBA438 /* JSONKit.m */; };
 		8B7E476C15C314A200C588FA /* TargetMouseBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E476B15C314A200C588FA /* TargetMouseBtn.m */; };
@@ -40,6 +43,19 @@
 		D5F80A9D0FB0A2FF0006A4DE /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = D5617A080FAEAF8300928B3A /* icon.icns */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8B4B9DE71A2C01450074ADC6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B4B9DE81A2C015A0074ADC6 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -51,6 +67,8 @@
 		32CA4F630368D1EE00C91783 /* Enjoy2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enjoy2_Prefix.pch; sourceTree = "<group>"; };
 		8B0C55241709F78F0086F30B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TranslationWindow.xib; sourceTree = "<group>"; };
 		8B0C5527170A07900086F30B /* dualshock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dualshock.png; sourceTree = "<group>"; };
+		8B4B9DE21A2BFD2A0074ADC6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		8B4B9DE51A2BFF6B0074ADC6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		8B7E22D81707EF6100DBA438 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8B7E22DC1707FD0900DBA438 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		8B7E22DD1707FD0900DBA438 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
@@ -108,6 +126,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				D594BF000FAE7397007A85F2 /* IOKit.framework in Frameworks */,
 				D561800A0FAFE8E400928B3A /* Carbon.framework in Frameworks */,
+				8B4B9DE31A2BFD2A0074ADC6 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +234,7 @@
 			children = (
 				8B0C5526170A07900086F30B /* JoystickImages */,
 				D549CA4B0FBB441B00BC8203 /* Credits.rtf */,
+				8B4B9DE51A2BFF6B0074ADC6 /* dsa_pub.pem */,
 				D5617A080FAEAF8300928B3A /* icon.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -227,6 +247,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B4B9DE21A2BFD2A0074ADC6 /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -260,6 +281,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				8B4B9DE71A2C01450074ADC6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -306,6 +328,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				D5F80A9D0FB0A2FF0006A4DE /* icon.icns in Resources */,
+				8B4B9DE61A2BFF6B0074ADC6 /* dsa_pub.pem in Resources */,
 				D549CA4C0FBB441B00BC8203 /* Credits.rtf in Resources */,
 				8B7E22D91707EF6100DBA438 /* README.md in Resources */,
 				8B0C55251709F78F0086F30B /* TranslationWindow.xib in Resources */,
@@ -383,6 +406,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"$(PROJECT_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -393,6 +417,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Enjoy2;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -405,6 +430,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"$(PROJECT_DIR)",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -412,6 +438,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Enjoy2;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Enjoy2 Changelog</title>
+        <link>https://s3.amazonaws.com/nongraphical/enjoy2/Enjoy2Appcast.xml</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+
+        <item>
+            <title>Version 1.2.1 (1 bug fixed; 1 new feature)</title>
+            <sparkle:releaseNotesLink>
+                https://s3.amazonaws.com/nongraphical/enjoy2/changelog_1.2.1.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Mon, 1 Dec 2014 00:00:00 +0000</pubDate>
+            <enclosure url="https://s3.amazonaws.com/nongraphical/releases/Enjoy2-1.2.1.zip" sparkle:version="1.2.1" sparkle:dsaSignature="MCwCFE7FNa4bfSHnlDKCCwaO5lFhkgHYAhQRFhhN1K8lYjN+tG1ZxnPffH5M3g==" length="1264250" type="application/octet-stream" />
+            <sparkle:minimumSystemVersion>10.7</sparkle:minimumSystemVersion>
+        </item>
+    </channel>
+</rss>
