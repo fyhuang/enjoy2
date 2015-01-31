@@ -12,7 +12,7 @@ If you've ever played a video game which only supports mouse and keyboard input,
 
 Enjoy2 supports multiple configurations (for different games or programs) and you can even map joystick buttons to change configurations on-the-fly.
 
-Enjoy2 is written by [@nongraphical](http://nongraphical.com) and is based on [Enjoy by Sam McCall](http://abstractable.net/enjoy/). Enjoy2 is MIT-licensed.
+Enjoy2 is written by [@nongraphical](http://nongraphical.com) and is based on [Enjoy by Sam McCall](https://yukkurigames.com/enjoyable/). Enjoy2 is MIT-licensed.
 
 ## How to install
 
