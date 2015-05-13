@@ -10,10 +10,9 @@
 @class JSAction;
 
 @interface JSActionAnalog : JSAction {
-	double offset, min, max;
+	double min, max;
 }
 
-@property(readwrite) double offset;
 @property(readwrite) double min;
 @property(readwrite) double max;
 
