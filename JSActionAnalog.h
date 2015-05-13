@@ -10,11 +10,12 @@
 @class JSAction;
 
 @interface JSActionAnalog : JSAction {
-	double offset, scale;
+	double offset, min, max;
 }
 
 @property(readwrite) double offset;
-@property(readwrite) double scale;
+@property(readwrite) double min;
+@property(readwrite) double max;
 
 - (id) initWithIndex: (int)newIndex;
 -(double) getRealValue: (int) value;

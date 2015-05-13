@@ -72,15 +72,16 @@
 		if((max - min == 1) || usagePage == kHIDPage_Button || type == kIOHIDElementTypeInput_Button) {
 			action = [[JSActionButton alloc] initWithIndex: buttons++ andName: (NSString *)elName];
 			[(JSActionButton*)action setMax: max];
-		} else if(usage == 0x39)
+        } else if(usage == 0x39) {
 			action = [[JSActionHat alloc] init];
-		else {
+        } else {
 			if(usage >= 0x30 && usage < 0x36) {
 				action = [[JSActionAnalog alloc] initWithIndex: axes++];
-				[(JSActionAnalog*)action setOffset: (double)-1.0];
-				[(JSActionAnalog*)action setScale: (double)2.0/(max - min)];
-			} else 
+				[(JSActionAnalog*)action setMax: (double)max];
+                [(JSActionAnalog*)action setMin: (double)min];
+            } else {
 				continue;
+            }
 		}
 
 		[action setBase: self];

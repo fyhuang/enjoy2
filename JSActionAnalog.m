@@ -23,14 +23,18 @@
 }
 
 -(id) findSubActionForValue: (IOHIDValueRef) value {
+    int raw = IOHIDValueGetIntegerValue(value);
+    double parsed = [self getRealValue: raw];
+    
     if ([[subActions objectAtIndex: 2] active]) {
+        if (fabs(parsed) < 0.3) {
+            return NULL;
+        }
+        
         return [subActions objectAtIndex: 2]; // TODO?
     }
     
     //Target* target = [[base->configsController currentConfig] getTargetForAction: [subActions objectAtIndex: 0]];
-    
-	int raw = IOHIDValueGetIntegerValue(value);
-    double parsed = [self getRealValue: raw];
 	
 	if(parsed < -0.3) // fixed?!
 		return [subActions objectAtIndex: 0];
@@ -40,22 +44,21 @@
 }
 
 -(void) notifyEvent: (IOHIDValueRef) value {
-    // Analog action is always active
-    [[subActions objectAtIndex: 2] setActive: true];
-    
-	int raw = IOHIDValueGetIntegerValue(value);
+    int raw = IOHIDValueGetIntegerValue(value);
     double parsed = [self getRealValue: raw];
+    
+    [[subActions objectAtIndex: 2] setActive: (fabs(parsed) > 0.3)];
 	
 	[[subActions objectAtIndex: 0] setActive: (parsed < -0.3)];
 	[[subActions objectAtIndex: 1] setActive: (parsed > 0.3)];
 }
 
 -(double) getRealValue: (int)value {
-	double parsed = offset + scale * value;
+	double parsed = -1.0 + 2.0 * (value - min) / (max - min);
     return parsed;
 }
 
-@synthesize offset, scale;
+@synthesize min, max;
 
 
 @end
