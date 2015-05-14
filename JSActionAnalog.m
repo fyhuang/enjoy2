@@ -54,7 +54,7 @@
 }
 
 -(double) getRealValue: (int)value {
-	double parsed = -1.0 + 2.0 * (value - min) / (max - min);
+	double parsed = -1.0 + 2.0 * (value - min - 0.5) / (max - min);
     return parsed;
 }
 
