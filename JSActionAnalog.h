@@ -11,10 +11,15 @@
 
 @interface JSActionAnalog : JSAction {
 	double min, max;
+    
+    double discreteThreshold;
+    double analogThreshold;
 }
 
 @property(readwrite) double min;
 @property(readwrite) double max;
+@property(readwrite) double discreteThreshold;
+@property(readwrite) double analogThreshold;
 
 - (id) initWithIndex: (int)newIndex;
 -(double) getRealValue: (int) value;

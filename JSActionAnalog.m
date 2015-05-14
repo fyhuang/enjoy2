@@ -9,16 +9,19 @@
 
 - (id) initWithIndex: (int)newIndex {
 	if(self = [super init]) {
-	subActions = [NSArray arrayWithObjects:
-		[[SubAction alloc] initWithIndex: 0 name: @"Low" base: self],
-		[[SubAction alloc] initWithIndex: 1 name: @"High" base: self],
-        [[SubAction alloc] initWithIndex: 2 name: @"Analog" base: self],
-		nil
-	];
-		[subActions retain];
-	index = newIndex;
-	name = [[NSString alloc] initWithFormat: @"Axis %d", (index+1)];
-   }
+        subActions = [NSArray arrayWithObjects:
+            [[SubAction alloc] initWithIndex: 0 name: @"Low" base: self],
+            [[SubAction alloc] initWithIndex: 1 name: @"High" base: self],
+            [[SubAction alloc] initWithIndex: 2 name: @"Analog" base: self],
+            nil
+        ];
+            [subActions retain];
+        index = newIndex;
+        name = [[NSString alloc] initWithFormat: @"Axis %d", (index+1)];
+        
+        analogThreshold = 0.1;
+        discreteThreshold = 0.3;
+    }
 	return self;
 }
 
@@ -27,7 +30,7 @@
     double parsed = [self getRealValue: raw];
     
     if ([[subActions objectAtIndex: 2] active]) {
-        if (fabs(parsed) < 0.3) {
+        if (fabs(parsed) < analogThreshold) {
             return NULL;
         }
         
@@ -36,9 +39,9 @@
     
     //Target* target = [[base->configsController currentConfig] getTargetForAction: [subActions objectAtIndex: 0]];
 	
-	if(parsed < -0.3) // fixed?!
+	if(parsed < -discreteThreshold) // fixed?!
 		return [subActions objectAtIndex: 0];
-	else if(parsed > 0.3)
+	else if(parsed > discreteThreshold)
 		return [subActions objectAtIndex: 1];
 	return NULL;
 }
@@ -47,10 +50,10 @@
     int raw = IOHIDValueGetIntegerValue(value);
     double parsed = [self getRealValue: raw];
     
-    [[subActions objectAtIndex: 2] setActive: (fabs(parsed) > 0.3)];
+    [[subActions objectAtIndex: 2] setActive: (fabs(parsed) > analogThreshold)];
 	
-	[[subActions objectAtIndex: 0] setActive: (parsed < -0.3)];
-	[[subActions objectAtIndex: 1] setActive: (parsed > 0.3)];
+	[[subActions objectAtIndex: 0] setActive: (parsed < -discreteThreshold)];
+	[[subActions objectAtIndex: 1] setActive: (parsed > discreteThreshold)];
 }
 
 -(double) getRealValue: (int)value {
@@ -58,7 +61,7 @@
     return parsed;
 }
 
-@synthesize min, max;
+@synthesize min, max, discreteThreshold, analogThreshold;
 
 
 @end
