@@ -61,11 +61,11 @@ void timer_callback(CFRunLoopTimerRef timer, void *ctx) {
 }
 
 void input_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDValueRef value) {
-    Joystick *js = (Joystick *) inContext;
+	Joystick *js = (Joystick *) inContext;
 	JoystickController* self = [js controller];
 	IOHIDDeviceRef device = (IOHIDDeviceRef) inSender;
 
-    ApplicationController *app_controller = [[NSApplication sharedApplication] delegate];
+	ApplicationController *app_controller = [[NSApplication sharedApplication] delegate];
 	if([app_controller active]) {
 		// for reals
 		JSAction* mainAction = [js actionForEvent: value];

@@ -15,7 +15,7 @@
 		children = [[NSMutableArray alloc]init];
 		
 		device = newDevice;
-        controller = newController;
+		controller = newController;
 		productName = (NSString*)IOHIDDeviceGetProperty( device, CFSTR(kIOHIDProductKey) );
 		vendorId = [(NSNumber*)IOHIDDeviceGetProperty(device, CFSTR(kIOHIDVendorIDKey)) intValue];
 		productId = [(NSNumber*)IOHIDDeviceGetProperty(device, CFSTR(kIOHIDVendorIDKey)) intValue];

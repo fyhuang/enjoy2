@@ -13,7 +13,7 @@
 @interface Joystick : NSObject {
 	int vendorId;
 	int productId;
-    JoystickController *controller;
+	JoystickController *controller;
 	int index;
 	NSString* productName;
 	IOHIDDeviceRef device;
