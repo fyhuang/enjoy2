@@ -8,13 +8,14 @@
 @implementation Joystick
 
 
-@synthesize	vendorId, productId, productName, name, index, device, children;
+@synthesize	vendorId, productId, productName, name, controller, index, device, children;
 
--(id)initWithDevice: (IOHIDDeviceRef) newDevice {
+-(id)initWithDevice: (IOHIDDeviceRef) newDevice andController: (JoystickController*) newController {
 	if(self=[super init]) {
 		children = [[NSMutableArray alloc]init];
 		
 		device = newDevice;
+		controller = newController;
 		productName = (NSString*)IOHIDDeviceGetProperty( device, CFSTR(kIOHIDProductKey) );
 		vendorId = [(NSNumber*)IOHIDDeviceGetProperty(device, CFSTR(kIOHIDVendorIDKey)) intValue];
 		productId = [(NSNumber*)IOHIDDeviceGetProperty(device, CFSTR(kIOHIDVendorIDKey)) intValue];

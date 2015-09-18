@@ -61,11 +61,11 @@ void timer_callback(CFRunLoopTimerRef timer, void *ctx) {
 }
 
 void input_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDValueRef value) {
-	JoystickController* self = (JoystickController*)inContext;
+	Joystick *js = (Joystick *) inContext;
+	JoystickController* self = [js controller];
 	IOHIDDeviceRef device = (IOHIDDeviceRef) inSender;
-	
-	Joystick* js = [self findJoystickByRef: device];
-    ApplicationController *app_controller = [[NSApplication sharedApplication] delegate];
+
+	ApplicationController *app_controller = [[NSApplication sharedApplication] delegate];
 	if([app_controller active]) {
 		// for reals
 		JSAction* mainAction = [js actionForEvent: value];
@@ -137,15 +137,16 @@ void add_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDDevic
 	JoystickController* self = (JoystickController*)inContext;
 	
 	IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
-	IOHIDDeviceRegisterInputValueCallback(device, input_callback, (void*) self);
 	
-	Joystick *js = [[Joystick alloc] initWithDevice: device];
+	Joystick *js = [[Joystick alloc] initWithDevice: device andController: self];
 	[js setIndex: findAvailableIndex([self joysticks], js)];
 	
 	[js populateActions];
 
 	[[self joysticks] addObject: js];
 	[self->outlineView reloadData];
+
+	IOHIDDeviceRegisterInputValueCallback(device, input_callback, (void*) js);
 }
 	
 -(Joystick*) findJoystickByRef: (IOHIDDeviceRef) device {

@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class JoystickController;
 @class JSAction;
 
 @interface Joystick : NSObject {
 	int vendorId;
 	int productId;
+	JoystickController *controller;
 	int index;
 	NSString* productName;
 	IOHIDDeviceRef device;
@@ -21,6 +23,7 @@
 
 @property(readwrite) int vendorId;
 @property(readwrite) int productId;
+@property(readwrite, copy) JoystickController* controller;
 @property(readwrite) int index;
 @property(readwrite, copy) NSString* productName;
 @property(readwrite) IOHIDDeviceRef device;
@@ -30,7 +33,7 @@
 -(void) populateActions;
 -(void) invalidate;
 -(id) handlerForEvent: (IOHIDValueRef) value;
--(id)initWithDevice: (IOHIDDeviceRef) newDevice;
+-(id)initWithDevice: (IOHIDDeviceRef) newDevice andController: (JoystickController*) controller;
 -(JSAction*) actionForEvent: (IOHIDValueRef) value;
 
 @end
